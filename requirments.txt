@@ -1,0 +1,5 @@
+Create a User registration which gives you the option to register as a client or as a provider.
+Features:
+-Client will able to view ONLY providers but not other clients and send Friend requests to the providers.
+-Providers will have access to change their profile picture, add a description about themselves, and post blog posts along with features Clients have.
+- You are free to design how the styling of the pages will look. Show me your creativity with the design.
