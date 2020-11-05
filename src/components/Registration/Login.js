@@ -8,11 +8,14 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Container from "@material-ui/core/Container";
-import useStyles from '../cutomHooks/UseStyles';
-import Copyright from './Copywrite';
-import { Checkbox, FormControlLabel, Typography } from "@material-ui/core";
+import useStyles from "../cutomHooks/UseStyles";
+import Copyright from "./Copywrite";
+import { Typography } from "@material-ui/core";
+import { useState } from "react";
 
-export default function Login({ setActive }) {
+export default function Login({ setActive, handleSignin }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const classes = useStyles();
 
   return (
@@ -25,10 +28,17 @@ export default function Login({ setActive }) {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form
+          className={classes.form}
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSignin({ email, password });
+          }}
+        >
           <TextField
             variant="outlined"
             margin="normal"
+            onChange={(e) => setEmail(e.target.value)}
             required
             fullWidth
             id="email"
@@ -40,6 +50,7 @@ export default function Login({ setActive }) {
           <TextField
             variant="outlined"
             margin="normal"
+            onChange={(e) => setPassword(e.target.value)}
             required
             fullWidth
             name="password"

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,13 +10,17 @@ import MainPage from "./components/Root/MainPage";
 import Root from "./components/Root/Root";
 
 function App() {
-  const user = false;
+const [loggedin, setLoggedin] = useState(false)
   return (
     <>
       <Router>
-        {!user ? (
+        {!loggedin ? (
           <Switch>
-            <Route exact path="/register" component={Register} />
+            <Route
+              exact
+              path="/register"
+              component={() => <Register setLoggedin={setLoggedin} />}
+            />
             <Redirect to="/register" />
           </Switch>
         ) : (
