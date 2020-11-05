@@ -1,9 +1,10 @@
 import React from 'react'
+import Login from './Login'
 
 export default function Register() {
   return (
-    <h1>
-      hello from register
-    </h1>
+    <>
+      <Login />
+    </>
   )
 }
