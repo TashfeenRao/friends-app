@@ -3,8 +3,6 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -14,7 +12,7 @@ import useStyles from '../cutomHooks/UseStyles';
 import Copyright from './Copywrite';
 import { Typography } from "@material-ui/core";
 
-export default function Login() {
+export default function Login({ setActive }) {
   const classes = useStyles();
 
   return (
@@ -59,9 +57,13 @@ export default function Login() {
           >
             Sign In
           </Button>
-          <Grid container>
+          <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link
+                component="button"
+                onClick={() => setActive(false)}
+                variant="body2"
+              >
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
