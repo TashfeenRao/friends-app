@@ -10,7 +10,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Container from "@material-ui/core/Container";
 import useStyles from '../cutomHooks/UseStyles';
 import Copyright from './Copywrite';
-import { Typography } from "@material-ui/core";
+import { Checkbox, FormControlLabel, Typography } from "@material-ui/core";
 
 export default function Login({ setActive }) {
   const classes = useStyles();
