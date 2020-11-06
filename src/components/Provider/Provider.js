@@ -1,11 +1,10 @@
-import { AppBar, Breadcrumbs, Grid, IconButton, Toolbar, Typography } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Grid } from "@material-ui/core";
 import AppBarComp from "./AppBar";
 import CardComp from "./CardComp";
 
 export default function Provider() {
   return (
-    <Grid container direction="row">
+    <Grid container spacing={1}>
       <Grid item xs={12}>
       <AppBarComp />
       </Grid>
