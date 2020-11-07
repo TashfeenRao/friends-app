@@ -1,21 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Provider from "../Provider/Provider";
+import { userContext } from "../../App";
+import Client from "../Client/Client";
 
 export default function MainPage() {
-  const role = false;
-  return (
-    <>
-      {role ? (
-        <Button variant="contained" color="primary">
-          <Link to="/provider">Provider</Link>
-        </Button>
-      ) : (
-        <>
-        <Provider />
-        </>
-      )}
-    </>
-  );
+  const { user } = useContext(userContext);
+  const { role } = user;
+  return role ? <Provider /> : <Client />;
 }

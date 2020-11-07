@@ -52,19 +52,7 @@ function App() {
           </Switch>
         ) : (
           <userContext.Provider value={{ user }}>
-            <Switch>
-              <Route exact path="/" component={MainPage} />
-            </Switch>
-            <Root />
-            {user.role ? (
-              <Switch>
-                <Route exact path="/provider/:profile" component={ProviderProfile} />
-              </Switch>
-            ) : (
-              <Switch>
-                <Route exact path="/client/:profile" component={ClientProfile} />
-              </Switch>
-            )}
+              <Root />
           </userContext.Provider>
         )}
       </Router>
