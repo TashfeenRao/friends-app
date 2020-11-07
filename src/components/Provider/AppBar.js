@@ -21,17 +21,16 @@ const useStyles = makeStyles((theme) => ({
 export default function AppBarComp() {
   const classes = useStyles();
 
-
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            Friends App
+            <Link to="/">Friends App</Link>
           </Typography>
-            <Link to="/client/profile">
-              <AccountCircle />
-            </Link>
+          <Link to="/client/profile">
+            <AccountCircle />
+          </Link>
         </Toolbar>
       </AppBar>
     </div>

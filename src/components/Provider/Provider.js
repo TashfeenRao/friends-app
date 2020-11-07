@@ -9,8 +9,8 @@ export default function Provider() {
       <AppBarComp />
       </Grid>
       <Grid item xs={12}>
-        <Grid container justify="center" spacing={5}>
-          <Grid item spacing={5}>
+        <Grid container>
+          <Grid item>
             <h1>All Providers</h1>
           </Grid>
         </Grid>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,6 +11,7 @@ import Register from "./components/Registration/Register";
 import MainPage from "./components/Root/MainPage";
 import Root from "./components/Root/Root";
 import toastSuccess from "./components/toast/toastSuccess";
+export const userContext = createContext();
 
 function App() {
   const [loggedin, setLoggedin] = useState(false);
@@ -50,13 +51,15 @@ function App() {
           </Switch>
         ) : (
           <>
-            <Switch>
-              <Route exact path="/" component={MainPage} />
-            </Switch>
-            <Root />
-            <Switch>
-              <Route exact path="/client/:user" component={ClientProfile} />
-            </Switch>
+            <userContext.Provider value={{user}}>
+              <Switch>
+                <Route exact path="/" component={MainPage} />
+              </Switch>
+              <Root />
+              <Switch>
+                <Route exact path="/client/:user" component={ClientProfile} />
+              </Switch>
+            </userContext.Provider>
           </>
         )}
       </Router>
