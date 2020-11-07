@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Link } from "react-router-dom";
+import { userContext } from "../../App";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AppBarComp() {
+const {user} = useContext(userContext)
+const {role} = user;
   const classes = useStyles();
 
   return (
@@ -28,7 +31,7 @@ export default function AppBarComp() {
           <Typography variant="h6" className={classes.title}>
             <Link to="/">Friends App</Link>
           </Typography>
-          <Link to="/client/profile">
+          <Link to={`/${role ? 'provider' : 'client'}/profile`}>
             <AccountCircle />
           </Link>
         </Toolbar>

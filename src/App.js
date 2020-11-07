@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import ClientProfile from "./components/profile/ClientProfile";
+import ProviderProfile from "./components/profile/ProviderProfile";
 import Register from "./components/Registration/Register";
 import MainPage from "./components/Root/MainPage";
 import Root from "./components/Root/Root";
@@ -50,17 +51,21 @@ function App() {
             <Redirect to="/register" />
           </Switch>
         ) : (
-          <>
-            <userContext.Provider value={{user}}>
+          <userContext.Provider value={{ user }}>
+            <Switch>
+              <Route exact path="/" component={MainPage} />
+            </Switch>
+            <Root />
+            {user.role ? (
               <Switch>
-                <Route exact path="/" component={MainPage} />
+                <Route exact path="/provider/:profile" component={ProviderProfile} />
               </Switch>
-              <Root />
+            ) : (
               <Switch>
-                <Route exact path="/client/:user" component={ClientProfile} />
+                <Route exact path="/client/:profile" component={ClientProfile} />
               </Switch>
-            </userContext.Provider>
-          </>
+            )}
+          </userContext.Provider>
         )}
       </Router>
     </>
