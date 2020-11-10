@@ -16,8 +16,7 @@ import { useState } from "react";
 
 export default function SignUp({ setActive, handleSubmit }) {
   const classes = useStyles();
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState(false);
@@ -31,32 +30,30 @@ export default function SignUp({ setActive, handleSubmit }) {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} onSubmit={(e) => { e.preventDefault();
-        handleSubmit({fname,lname,email,password,role})}}>
+        <form
+          className={classes.form}
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit({
+              username,
+              email,
+              password,
+              role: role ? "provider" : "client",
+            });
+          }}
+        >
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={12}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
+                autoComplete="username"
+                name="userName"
                 variant="outlined"
-                onChange={(e) => setFname(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="firsName"
+                label="User Name"
                 autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                onChange={(e) => setLname(e.target.value)}
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
               />
             </Grid>
             <Grid item xs={12}>

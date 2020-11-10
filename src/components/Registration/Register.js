@@ -8,9 +8,28 @@ import { CircularProgress } from "@material-ui/core";
 export default function Register({ setUser }) {
   const [active, setActive] = useState(true);
   const [loading, setLoading] = useState(false);
-  const handleSubmit = (user) => {
-    localStorage.setItem(user.email, JSON.stringify(user));
-    setUser(user);
+
+  const handleSubmit = (data) => {
+    const config = {
+      method: "post",
+      url: "http://localhost:1337/auth/local/register",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+    setLoading(true);
+    Axios(config)
+      .then((response) => {
+        setUser(response.data.user);
+        localStorage.setItem("token", response.data.jwt);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        setLoading(false);
+      })
+      .catch((error) => {
+        toastError("invalid email / password");
+        setLoading(false);
+      });
   };
   const handleSignin = (u) => {
     const data = { identifier: u.email, password: u.password };
