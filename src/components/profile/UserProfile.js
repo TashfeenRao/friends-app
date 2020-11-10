@@ -27,7 +27,7 @@ export default function UserProfile() {
         toastError("could not able to find users");
         setLoading(false);
       });
-  }, []);
+  }, [id]);
 
   if (loading)
     return (

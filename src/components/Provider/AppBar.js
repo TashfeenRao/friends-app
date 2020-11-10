@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Link } from "react-router-dom";
 import { userContext } from "../../App";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AppBarComp() {
-const {user} = useContext(userContext)
-const {role} = user;
+  const { user } = useContext(userContext);
+  const { role } = user;
   const classes = useStyles();
 
   return (
@@ -31,7 +32,10 @@ const {role} = user;
           <Typography variant="h6" className={classes.title}>
             <Link to="/">Friends App</Link>
           </Typography>
-          <Link to={`/${role ? 'provider' : 'client'}/profile`}>
+          <Link to="/register" onClick={() => localStorage.clear()}>
+            Sign Out
+          </Link>
+          <Link to={`/${role ? "provider" : "client"}/profile`}>
             <AccountCircle />
           </Link>
         </Toolbar>
