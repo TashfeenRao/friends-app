@@ -26,7 +26,8 @@ export default function Register({ setUser }) {
     Axios(config)
       .then((response) => {
         setUser(response.data.user);
-        localStorage.setItem(`${response.data.user.id}`, response.data.jwt);
+        localStorage.setItem("token", response.data.jwt);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
         setLoading(false);
       })
       .catch((error) => {

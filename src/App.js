@@ -13,7 +13,9 @@ export const userContext = createContext();
 
 function App() {
   const [loggedin, setLoggedin] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(
+    null || JSON.parse(localStorage.getItem("user")),
+  );
   useEffect(() => {
     if (user) setLoggedin(true);
   }, [user]);
