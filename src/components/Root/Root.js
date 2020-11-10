@@ -1,12 +1,9 @@
 import React from "react";
-import {
-  Redirect,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Client from "../Client/Client";
 import ClientProfile from "../profile/ClientProfile";
 import ProviderProfile from "../profile/ProviderProfile";
+import UserProfile from "../profile/UserProfile";
 import Provider from "../Provider/Provider";
 import MainPage from "./MainPage";
 
@@ -18,6 +15,7 @@ export default function Root() {
       <Route exact path="/client" component={Client} />
       <Route exact path="/provider" component={Provider} />
       <Route exact path="/provider/:profile" component={ProviderProfile} />
+      <Route exact path="/user/:id" component={UserProfile} />
       <Redirect to="/" />
     </Switch>
   );
