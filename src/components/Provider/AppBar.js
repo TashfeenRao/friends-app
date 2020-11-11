@@ -1,24 +1,11 @@
 import React, { useContext } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Link } from "react-router-dom";
 import { userContext } from "../../App";
-import { Button } from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
+import useStyles from "../cutomHooks/UseStyles";
 
 export default function AppBarComp() {
   const { user } = useContext(userContext);
@@ -26,8 +13,7 @@ export default function AppBarComp() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.root}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             <Link to="/">Friends App</Link>
@@ -40,6 +26,5 @@ export default function AppBarComp() {
           </Link>
         </Toolbar>
       </AppBar>
-    </div>
   );
 }

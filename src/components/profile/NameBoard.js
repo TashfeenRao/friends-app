@@ -1,52 +1,38 @@
-import { Grid, Typography } from '@material-ui/core';
-import React, { useContext } from 'react'
-import {userContext} from '../../App';
+import { Grid, Paper, Typography } from "@material-ui/core";
+import React, { useContext } from "react";
+import { userContext } from "../../App";
+import useStyles from "../cutomHooks/UseStyles";
 
 export default function NameBoard() {
-const { user } = useContext(userContext);
-const { fname, lname, email, role} = user;
+  const { user } = useContext(userContext);
+  const { username, description, email, role } = user;
+  const classes = useStyles();
 
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <Grid container>
-          <Grid item xs={1}>
-            <Typography variant="h6">Fname:</Typography>
-          </Grid>
-          <Grid item xs={11}>
-            <Typography variant="h5">{fname}</Typography>
-          </Grid>
-        </Grid>
+      <Grid item xs={12} sm={6}>
+        <Paper className={classes.paper}>
+          <Typography variant="h6">Username:</Typography>
+          {username}
+        </Paper>
       </Grid>
-      <Grid item xs={12}>
-        <Grid container>
-          <Grid item xs={1}>
-            <Typography variant="h6">Lname:</Typography>
-          </Grid>
-          <Grid item xs={11}>
-            <Typography variant="h5">{lname}</Typography>
-          </Grid>
-        </Grid>
+      <Grid item xs={12} sm={6}>
+        <Paper className={classes.paper}>
+          <Typography variant="h6">Description:</Typography>
+          {description && description}
+        </Paper>
       </Grid>
-      <Grid item xs={12}>
-        <Grid container>
-          <Grid item xs={1}>
-            <Typography variant="h6">Email:</Typography>
-          </Grid>
-          <Grid item xs={11}>
-            <Typography variant="h5">{email}</Typography>
-          </Grid>
-        </Grid>
+      <Grid item xs={12} sm={6}>
+        <Paper className={classes.paper}>
+          <Typography variant="h6">Email:</Typography>
+          {email}
+        </Paper>
       </Grid>
-      <Grid item xs={12}>
-        <Grid container>
-          <Grid item xs={1}>
-            <Typography variant="h6">Role:</Typography>
-          </Grid>
-          <Grid item xs={11}>
-            <Typography variant="h5">{role ? 'provider' : 'client'}</Typography>
-          </Grid>
-        </Grid>
+      <Grid item xs={12} sm={6}>
+        <Paper className={classes.paper}>
+          <Typography variant="h6">Role:</Typography>
+          {role ? "provider" : "client"}
+        </Paper>
       </Grid>
     </Grid>
   );

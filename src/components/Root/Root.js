@@ -16,7 +16,8 @@ export default function Root() {
       <Route exact path="/provider" component={Provider} />
       <Route exact path="/provider/:profile" component={ProviderProfile} />
       <Route exact path="/user/:id" component={UserProfile} />
-      <Redirect to="/" />
+
+      {/*<Redirect to="/" /> */}
     </Switch>
   );
 }

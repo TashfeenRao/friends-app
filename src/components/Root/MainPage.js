@@ -21,7 +21,7 @@ export default function MainPage() {
       },
     };
     setLoading(true);
-    Axios(config)
+    const unsubcribe = Axios(config)
       .then((response) => {
         setUsers(response.data);
         setLoading(false);
@@ -30,6 +30,7 @@ export default function MainPage() {
         toastError("could not able to find users");
         setLoading(false);
       });
+    return unsubcribe;
   }, []);
 
   if (loading)
