@@ -1,22 +1,9 @@
-import { Avatar, Grid, makeStyles, Paper } from '@material-ui/core';
-import NameBoard from './NameBoard';
+import { Avatar, Grid, makeStyles, Paper } from "@material-ui/core";
+import NameBoard from "./NameBoard";
 import img1 from "../../images/man.jpg";
+import useStyles from "../cutomHooks/UseStyles";
 
 export default function Profile() {
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-  large: {
-    width: theme.spacing(20),
-    height: theme.spacing(20),
-  },
-}));
   const classes = useStyles();
   return (
     <Grid container spacing={6}>

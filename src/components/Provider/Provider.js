@@ -4,7 +4,7 @@ import CardComp from "./CardComp";
 
 export default function Provider({ filUsers }) {
   return (
-    <Grid container spacing={1} justify="center">
+    <Grid container justify="center">
       <Grid item xs={12}>
         <AppBarComp />
       </Grid>
@@ -18,6 +18,7 @@ export default function Provider({ filUsers }) {
               username={user.username}
               email={user.email}
               id={user.id}
+              url={user.image.url}
             />
           </Grid>
         ))}

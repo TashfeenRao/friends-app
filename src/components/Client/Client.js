@@ -18,6 +18,7 @@ export default function Client({ filUsers }) {
               username={user.username}
               email={user.email}
               id={user.id}
+              url={user.image.url}
             />
           </Grid>
         ))}
