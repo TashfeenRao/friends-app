@@ -1,19 +1,75 @@
-import { Avatar } from "@material-ui/core";
+import { Avatar, CircularProgress, Fab } from "@material-ui/core";
 import useStyles from "../cutomHooks/UseStyles";
 import { userContext } from "../../App";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
+import Axios from "axios";
+import toastError from "../toast/toastError";
 
 export default function DisplayPic() {
   const { user } = useContext(userContext);
+  const [loading, setLoading] = useState();
+  const [file, setFile] = useState(null);
   const { image } = user;
+  const [src, setSrc] = useState(image.url);
+
   const classes = useStyles();
+  const handleUpload = (e) => {
+    e.preventDefault();
+    setFile(e.target.files[0]);
+    const fd = new FormData();
+    fd.append("files", file);
+    fd.append("refId", user.id);
+    fd.append("field", "image");
+    fd.append("source", "users-permissions");
+    fd.append("ref", "user");
+    const config = {
+      method: "post",
+      url: "http://localhost:1337/upload",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      data: fd,
+    };
+    setLoading(true);
+    Axios(config)
+      .then(function (response) {
+        setFile(response.data);
+        setSrc(response.data[0].url);
+        setLoading(false);
+      })
+      .catch(function (error) {
+        toastError("Image could not upload, please try again");
+        setLoading(false);
+      });
+  };
+  if (loading)
+    return (
+      <CircularProgress
+        color="secondary"
+        size={50}
+      />
+    );
   return (
     <div>
       <Avatar
         alt=""
-        src={`http://localhost:1337${image.url}`}
+        src={`http://localhost:1337${src}`}
         className={classes.large}
       />
+      <input
+        accept="image/*"
+        className={classes.input}
+        id="contained-button-file"
+        multiple
+        type="file"
+        onChange={(e) => handleUpload(e)}
+      />
+      <label htmlFor="contained-button-file">
+        <Fab component="span" className={classes.button}>
+          <AddPhotoAlternateIcon />
+        </Fab>
+      </label>
     </div>
   );
 }

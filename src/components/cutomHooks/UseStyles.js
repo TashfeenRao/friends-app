@@ -1,4 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
+import red from "@material-ui/core/colors/red";
+import { blue } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +39,24 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+  },
+  icon: {
+    margin: theme.spacing(2),
+  },
+  iconHover: {
+    margin: theme.spacing(2),
+    "&:hover": {
+      color: red[800],
+    },
+  },
+  input: {
+    display: "none",
+  },
+  button: {
+    color: blue[900],
+  },
+  secondaryButton: {
+    color: "gray",
   },
 }));
 export default useStyles;
