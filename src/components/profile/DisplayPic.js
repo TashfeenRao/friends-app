@@ -1,19 +1,19 @@
 import { Avatar, CircularProgress, Fab } from "@material-ui/core";
 import useStyles from "../cutomHooks/UseStyles";
-import { userContext } from "../../App";
-import { useContext, useState } from "react";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import Axios from "axios";
 import toastError from "../toast/toastError";
+import { useState } from "react";
 
 export default function DisplayPic() {
-  const { user } = useContext(userContext);
+  const user = JSON.parse(localStorage.getItem("user"));
   const [loading, setLoading] = useState();
   const [file, setFile] = useState(null);
   const { image } = user;
   const [src, setSrc] = useState(image.url);
 
   const classes = useStyles();
+
   const handleUpload = (e) => {
     e.preventDefault();
     setFile(e.target.files[0]);
@@ -37,19 +37,17 @@ export default function DisplayPic() {
         setFile(response.data);
         setSrc(response.data[0].url);
         setLoading(false);
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ ...user, image: { url: response.data[0].url } }),
+        );
       })
       .catch(function (error) {
         toastError("Image could not upload, please try again");
         setLoading(false);
       });
   };
-  if (loading)
-    return (
-      <CircularProgress
-        color="secondary"
-        size={50}
-      />
-    );
+  if (loading) return <CircularProgress color="secondary" size={50} />;
   return (
     <div>
       <Avatar
