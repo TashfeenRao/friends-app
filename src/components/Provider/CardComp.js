@@ -25,12 +25,8 @@ export default function CardComp({ username, email, id, url }) {
           justifyContent: "center",
         }}
       >
-        <Avatar
-          alt=""
-          src={`http://localhost:1337${url}`}
-          className={classes.large}
-        >
-          H
+        <Avatar alt="" src={url} className={classes.large}>
+          {username[0].toUpperCase()}
         </Avatar>
       </div>
       <CardContent>

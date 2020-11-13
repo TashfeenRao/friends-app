@@ -8,23 +8,29 @@ import { userContext } from "../../App";
 import useStyles from "../cutomHooks/UseStyles";
 
 export default function AppBarComp() {
-  const { user } = useContext(userContext);
+  const { user, setLoggedin } = useContext(userContext);
   const { role } = user;
   const classes = useStyles();
 
   return (
-      <AppBar position="static" className={classes.root}>
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            <Link to="/">Friends App</Link>
-          </Typography>
-          <Link to="/register" onClick={() => localStorage.clear()}>
-            Sign Out
-          </Link>
-          <Link to={`/${role ? "provider" : "client"}/profile`}>
-            <AccountCircle />
-          </Link>
-        </Toolbar>
-      </AppBar>
+    <AppBar position="static" className={classes.root}>
+      <Toolbar>
+        <Typography variant="h6" className={classes.title}>
+          <Link to="/">Friends App</Link>
+        </Typography>
+        <Link
+          to="/register"
+          onClick={() => {
+            localStorage.clear();
+            setLoggedin(false);
+          }}
+        >
+          Sign Out
+        </Link>
+        <Link to={`/${role ? "provider" : "client"}/profile`}>
+          <AccountCircle />
+        </Link>
+      </Toolbar>
+    </AppBar>
   );
 }

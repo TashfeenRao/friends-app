@@ -12,7 +12,7 @@ export default function UserProfile() {
   useEffect(() => {
     const config = {
       method: "get",
-      url: `http://localhost:1337/users/${id}`,
+      url: `https://friends-app-strapi.herokuapp.com/users/${id}`,
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

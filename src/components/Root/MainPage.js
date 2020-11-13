@@ -15,7 +15,7 @@ export default function MainPage() {
   useEffect(() => {
     const config = {
       method: "get",
-      url: "http://localhost:1337/users",
+      url: "https://friends-app-strapi.herokuapp.com/users",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

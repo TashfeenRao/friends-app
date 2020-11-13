@@ -18,7 +18,7 @@ export default function Provider({ filUsers }) {
               username={user.username}
               email={user.email}
               id={user.id}
-              url={user.image.url}
+              url={user.image && user.image.url}
             />
           </Grid>
         ))}

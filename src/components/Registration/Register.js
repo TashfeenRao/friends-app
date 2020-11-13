@@ -12,7 +12,7 @@ export default function Register({ setUser }) {
   const handleSubmit = (data) => {
     const config = {
       method: "post",
-      url: "http://localhost:1337/auth/local/register",
+      url: "https://friends-app-strapi.herokuapp.com/auth/local/register",
       headers: {
         "Content-Type": "application/json",
       },
@@ -35,7 +35,7 @@ export default function Register({ setUser }) {
     const data = { identifier: u.email, password: u.password };
     const config = {
       method: "post",
-      url: "http://localhost:1337/auth/local",
+      url: "https://friends-app-strapi.herokuapp.com/auth/local",
       headers: {
         "Content-Type": "application/json",
       },

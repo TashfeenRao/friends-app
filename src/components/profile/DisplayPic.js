@@ -10,7 +10,7 @@ export default function DisplayPic() {
   const [loading, setLoading] = useState();
   const [file, setFile] = useState(null);
   const { image } = user;
-  const [src, setSrc] = useState(image.url);
+  const [src, setSrc] = useState(image && image.url);
 
   const classes = useStyles();
 
@@ -25,7 +25,7 @@ export default function DisplayPic() {
     fd.append("ref", "user");
     const config = {
       method: "post",
-      url: "http://localhost:1337/upload",
+      url: "https://friends-app-strapi.herokuapp.com/upload",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -50,11 +50,9 @@ export default function DisplayPic() {
   if (loading) return <CircularProgress color="secondary" size={50} />;
   return (
     <div>
-      <Avatar
-        alt=""
-        src={`http://localhost:1337${src}`}
-        className={classes.large}
-      />
+      <Avatar alt="" src={src} className={classes.large}>
+        {user.username[0].toUpperCase()}
+      </Avatar>
       <input
         accept="image/*"
         className={classes.input}
