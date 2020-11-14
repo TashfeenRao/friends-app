@@ -1,18 +1,51 @@
-import { Grid, Link, Paper, Typography } from "@material-ui/core";
+import { Grid, Paper, Typography } from "@material-ui/core";
 import React, { useContext, useState } from "react";
-import EditIcon from "@material-ui/icons/Edit";
 import { userContext } from "../../App";
 import useStyles from "../cutomHooks/UseStyles";
+import FormDialog from "./FormDialog";
+import Axios from "axios";
+import toastError from "../toast/toastError";
+import toastSuccess from "../toast/toastSuccess";
+import DescriptionComp from "./DescriptionComp";
 
 export default function NameBoard() {
   const { user } = useContext(userContext);
-  const [edit, setEdit] = useState(false);
   const { username, description, email, role } = user;
   const classes = useStyles();
-  function EditDescription() {
-    console.log("djsdnjsn");
-    return <h1>Helooooo</h1>;
-  }
+  const [input, setInput] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleEdit = () => {
+    setOpen(false);
+    setLoading(true);
+
+    var config = {
+      method: "put",
+      url: `https://friends-app-strapi.herokuapp.com/users/${user.id}`,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      data: { description: input },
+    };
+
+    Axios(config)
+      .then(function (response) {
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            ...user,
+            description: { url: response.data.description },
+          }),
+        );
+        toastSuccess("Added Your Description");
+        setLoading(false);
+      })
+      .catch(function (error) {
+        toastError("could not update please try again");
+        setLoading(false);
+      });
+  };
 
   return (
     <>
@@ -24,15 +57,11 @@ export default function NameBoard() {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
-            <Typography variant="h6">
-              Description:{" "}
-              <Link component="button" onClick={() => <EditDescription />}>
-                <EditIcon />
-              </Link>
-            </Typography>
-            {description && description}
-          </Paper>
+          <DescriptionComp
+            setOpen={setOpen}
+            loading={loading}
+            description={description}
+          />
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
@@ -47,6 +76,12 @@ export default function NameBoard() {
           </Paper>
         </Grid>
       </Grid>
+      <FormDialog
+        open={open}
+        setOpen={setOpen}
+        setInput={setInput}
+        handleEdit={handleEdit}
+      />
     </>
   );
 }

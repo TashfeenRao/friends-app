@@ -46,7 +46,7 @@ function App() {
               path="/register"
               component={() => <Register setUser={setUser} />}
             />
-            <Redirect to="/register" />
+            {/* <Redirect to="/register" /> */}
           </Switch>
         ) : (
           <userContext.Provider value={{ user, setLoggedin }}>

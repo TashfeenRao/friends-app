@@ -1,37 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import Provider from "../Provider/Provider";
 import { userContext } from "../../App";
 import Client from "../Client/Client";
 import { CircularProgress } from "@material-ui/core";
-import toastError from "../toast/toastError";
-import Axios from "axios";
+import useFetch from "../cutomHooks/useFetch";
 
 export default function MainPage() {
+  const { loading, users } = useFetch();
   const { user } = useContext(userContext);
-  const { role } = user;
-  const [loading, setLoading] = useState(false);
-  const [users, setUsers] = useState(null);
-
-  useEffect(() => {
-    const config = {
-      method: "get",
-      url: "https://friends-app-strapi.herokuapp.com/users",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    };
-    setLoading(true);
-    const unsubcribe = Axios(config)
-      .then((response) => {
-        setUsers(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        toastError("could not able to find users");
-        setLoading(false);
-      });
-    return unsubcribe;
-  }, []);
 
   if (loading)
     return (
@@ -45,10 +21,11 @@ export default function MainPage() {
         }}
       />
     );
-  const filUsers = users && users.filter((c) => c.role.name === `${role.name}`);
-  return role.name === "provider" ? (
-    <Provider filUsers={filUsers} />
-  ) : (
+  const filUsers = users && users.filter((c) => c.type === `${user.type}`);
+
+  return user.type === "provider" ? (
     <Client filUsers={filUsers} />
+  ) : (
+    <Provider filUsers={filUsers} />
   );
 }

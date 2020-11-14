@@ -20,6 +20,7 @@ export default function SignUp({ setActive, handleSubmit }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState(false);
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -38,7 +39,7 @@ export default function SignUp({ setActive, handleSubmit }) {
               username,
               email,
               password,
-              role: role ? "provider" : "client",
+              type: role ? "provider" : "client",
             });
           }}
         >

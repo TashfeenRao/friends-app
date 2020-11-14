@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { Grid } from "@material-ui/core";
 import AppBarComp from "./AppBar";
 import CardComp from "./CardComp";
 
-export default function Provider({ filUsers }) {
+export default memo(function Provider({ filUsers }) {
   return (
     <Grid container justify="center">
       <Grid item xs={12}>
@@ -24,4 +25,4 @@ export default function Provider({ filUsers }) {
         ))}
     </Grid>
   );
-}
+});
