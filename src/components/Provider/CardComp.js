@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-export default function CardComp({ username, email, id, url }) {
+export default function CardComp({ username, email, id, url, description }) {
   const classes = useStyles();
 
   return (
@@ -16,7 +16,8 @@ export default function CardComp({ username, email, id, url }) {
       className={classes.root}
       variant="outlined"
       style={{
-        backgroundColor: "#f2f2",
+        backgroundColor: "#2E294E",
+        color: "#F1E9DA",
       }}
     >
       <div
@@ -30,20 +31,26 @@ export default function CardComp({ username, email, id, url }) {
         </Avatar>
       </div>
       <CardContent>
-        <Typography color="textSecondary" gutterBottom>
+        <Typography variant="h5" component="h2">
           {username}
         </Typography>
-        <Typography variant="h5" component="h2">
-          {email}
-        </Typography>
         <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+          {description ? description : "Hi, Im using Friends app...."}
         </Typography>
       </CardContent>
       <CardActions>
-        <Link to={`/user/${id}`}>Profile</Link>
+        <Link
+          style={{
+            textDecoration: "none",
+            color: "#F1E9DA",
+            backgroundColor: "#f50057",
+            padding: "10px",
+            borderRadius: "5px",
+          }}
+          to={`/user/${id}`}
+        >
+          Profile
+        </Link>
       </CardActions>
     </Card>
   );
