@@ -1,6 +1,5 @@
 import { Grid, Paper, Typography } from "@material-ui/core";
-import React, { useContext, useState } from "react";
-import { userContext } from "../../App";
+import React, { useState } from "react";
 import useStyles from "../cutomHooks/UseStyles";
 import FormDialog from "./FormDialog";
 import Axios from "axios";
@@ -9,8 +8,8 @@ import toastSuccess from "../toast/toastSuccess";
 import DescriptionComp from "./DescriptionComp";
 
 export default function NameBoard() {
-  const { user } = useContext(userContext);
-  const { username, description, email, role } = user;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const { username, description, email, type } = user;
   const classes = useStyles();
   const [input, setInput] = useState(null);
   const [open, setOpen] = useState(false);
@@ -35,7 +34,7 @@ export default function NameBoard() {
           "user",
           JSON.stringify({
             ...user,
-            description: { url: response.data.description },
+            description: response.data.description,
           }),
         );
         toastSuccess("Added Your Description");
@@ -72,7 +71,7 @@ export default function NameBoard() {
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <Typography variant="h6">Role:</Typography>
-            {role ? "provider" : "client"}
+            {type === "provider" ? "provider" : "client"}
           </Paper>
         </Grid>
       </Grid>

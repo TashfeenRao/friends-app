@@ -1,10 +1,4 @@
-import {
-  CircularProgress,
-  Grid,
-  Paper,
-  Typography,
-  Link,
-} from "@material-ui/core";
+import { CircularProgress, Paper, Typography, Link } from "@material-ui/core";
 import React from "react";
 import useStyles from "../cutomHooks/UseStyles";
 import EditIcon from "@material-ui/icons/Edit";
@@ -27,7 +21,7 @@ export default function DescriptionComp({ setOpen, description, loading }) {
             <EditIcon />
           </Link>
         </Typography>
-        {description && description.url}
+        {description && description}
       </Paper>
     </div>
   );

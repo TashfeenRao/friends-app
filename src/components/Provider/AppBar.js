@@ -6,7 +6,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Link } from "react-router-dom";
 import { userContext } from "../../App";
 import useStyles from "../cutomHooks/UseStyles";
-import { IconButton, Menu, MenuItem } from "@material-ui/core";
+import { Grid, IconButton, Menu, MenuItem } from "@material-ui/core";
 
 export default function AppBarComp() {
   const { user, setLoggedin } = useContext(userContext);
@@ -20,7 +20,6 @@ export default function AppBarComp() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const { role } = user;
   const classes = useStyles();
 
   const style = {
@@ -40,15 +39,29 @@ export default function AppBarComp() {
     <AppBar position="static" color="secondary" className={classes.root}>
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
-          <Link
-            to="/"
-            style={style.Link}
-            onMouseOver={(e) => (e.target.style.backgroundColor = "#2E294E")}
-            onMouseLeave={(e) => (e.target.style.backgroundColor = "inherit")}
-          >
-            Friends App
-          </Link>
+          <Grid container alignContent="center">
+            <Grid item xs={6}>
+              <Link
+                to="/"
+                style={style.Link}
+                onMouseOver={(e) =>
+                  (e.target.style.backgroundColor = "#2E294E")
+                }
+                onMouseLeave={(e) =>
+                  (e.target.style.backgroundColor = "inherit")
+                }
+              >
+                Friends App
+              </Link>
+            </Grid>
+            <Grid item xs={6}>
+              <h3>
+                {user.type === "client" ? `All Providers` : `All Clients`}
+              </h3>
+            </Grid>
+          </Grid>
         </Typography>
+
         <IconButton
           aria-label="account of current user"
           aria-controls="menu-appbar"
@@ -76,7 +89,7 @@ export default function AppBarComp() {
           <MenuItem onClick={handleClose}>
             <Link
               style={style.signOut}
-              to={`/${role ? "provider" : "client"}/profile`}
+              to={`/${user.type ? "provider" : "client"}/profile`}
             >
               Profile
             </Link>

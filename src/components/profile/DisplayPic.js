@@ -4,6 +4,7 @@ import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import Axios from "axios";
 import toastError from "../toast/toastError";
 import { useState } from "react";
+import toastSuccess from "../toast/toastSuccess";
 
 export default function DisplayPic() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -41,6 +42,7 @@ export default function DisplayPic() {
           "user",
           JSON.stringify({ ...user, image: { url: response.data[0].url } }),
         );
+        toastSuccess("successfully updated image");
       })
       .catch(function (error) {
         toastError("Image could not upload, please try again");

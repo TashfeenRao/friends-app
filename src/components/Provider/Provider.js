@@ -9,9 +9,6 @@ export default memo(function Provider({ filUsers }) {
       <Grid item xs={12}>
         <AppBarComp />
       </Grid>
-      <Grid item xs={12}>
-        <h1>All Providers</h1>
-      </Grid>
       {filUsers &&
         filUsers.map((user) => (
           <Grid key={user.id} item xs={12} sm={4}>

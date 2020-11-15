@@ -21,7 +21,8 @@ export default function MainPage() {
         }}
       />
     );
-  const filUsers = users && users.filter((c) => c.type === `${user.type}`);
+  const filUsers =
+    users && users.filter((c) => c.type === `${user.type}` && c.id !== user.id);
 
   return user.type === "provider" ? (
     <Client filUsers={filUsers} />
