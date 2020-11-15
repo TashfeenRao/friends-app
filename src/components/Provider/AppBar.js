@@ -6,18 +6,33 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Link } from "react-router-dom";
 import { userContext } from "../../App";
 import useStyles from "../cutomHooks/UseStyles";
+import { IconButton, Menu, MenuItem } from "@material-ui/core";
 
 export default function AppBarComp() {
   const { user, setLoggedin } = useContext(userContext);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const { role } = user;
   const classes = useStyles();
 
   const style = {
     Link: {
       textDecoration: "none",
-      color: "white",
+      color: "#F1E9DA",
       padding: "10px",
       borderRadius: "10px",
+      border: "1px solid #2E294E",
+    },
+    signOut: {
+      textDecoration: "none",
     },
   };
 
@@ -34,18 +49,51 @@ export default function AppBarComp() {
             Friends App
           </Link>
         </Typography>
-        <Link
-          to="/register"
-          onClick={() => {
-            localStorage.clear();
-            setLoggedin(false);
-          }}
+        <IconButton
+          aria-label="account of current user"
+          aria-controls="menu-appbar"
+          aria-haspopup="true"
+          onClick={handleMenu}
+          color="inherit"
         >
-          Sign Out
-        </Link>
-        <Link to={`/${role ? "provider" : "client"}/profile`}>
           <AccountCircle />
-        </Link>
+        </IconButton>
+        <Menu
+          id="menu-appbar"
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          keepMounted
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={open}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>
+            <Link
+              style={style.signOut}
+              to={`/${role ? "provider" : "client"}/profile`}
+            >
+              Profile
+            </Link>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <Link
+              to="/register"
+              style={style.signOut}
+              onClick={() => {
+                localStorage.clear();
+                setLoggedin(false);
+              }}
+            >
+              Sign Out
+            </Link>
+          </MenuItem>
+        </Menu>
       </Toolbar>
     </AppBar>
   );
