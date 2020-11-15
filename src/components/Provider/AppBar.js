@@ -12,11 +12,27 @@ export default function AppBarComp() {
   const { role } = user;
   const classes = useStyles();
 
+  const style = {
+    Link: {
+      textDecoration: "none",
+      color: "white",
+      padding: "10px",
+      borderRadius: "10px",
+    },
+  };
+
   return (
-    <AppBar position="static" className={classes.root}>
+    <AppBar position="static" color="secondary" className={classes.root}>
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
-          <Link to="/">Friends App</Link>
+          <Link
+            to="/"
+            style={style.Link}
+            onMouseOver={(e) => (e.target.style.backgroundColor = "#2E294E")}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = "inherit")}
+          >
+            Friends App
+          </Link>
         </Typography>
         <Link
           to="/register"
