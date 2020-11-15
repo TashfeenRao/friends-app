@@ -13,16 +13,21 @@ export default function DescriptionComp({ setOpen, description, loading }) {
       </div>
     );
   return (
-    <div>
-      <Paper className={classes.paper}>
-        <Typography variant="h6">
-          Description:{" "}
-          <Link component="button" onClick={() => setOpen(true)}>
-            <EditIcon />
-          </Link>
-        </Typography>
-        {description && description}
-      </Paper>
-    </div>
+    <Paper
+      className={classes.paper}
+      style={{ backgroundColor: "#2E294E", color: "#F1E9DA" }}
+    >
+      <Typography variant="h6">
+        Description:{" "}
+        <Link
+          component="button"
+          color="secondary"
+          onClick={() => setOpen(true)}
+        >
+          <EditIcon />
+        </Link>
+      </Typography>
+      {description ? description : "Hi, I'm using friends app"}
+    </Paper>
   );
 }

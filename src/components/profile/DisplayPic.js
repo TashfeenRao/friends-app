@@ -1,10 +1,10 @@
 import { Avatar, CircularProgress, Fab } from "@material-ui/core";
 import useStyles from "../cutomHooks/UseStyles";
-import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import Axios from "axios";
 import toastError from "../toast/toastError";
 import { useState } from "react";
 import toastSuccess from "../toast/toastSuccess";
+import AddIcon from "@material-ui/icons/Add";
 
 export default function DisplayPic() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -64,8 +64,8 @@ export default function DisplayPic() {
         onChange={(e) => handleUpload(e)}
       />
       <label htmlFor="contained-button-file">
-        <Fab component="span" className={classes.button}>
-          <AddPhotoAlternateIcon />
+        <Fab component="span">
+          <AddIcon color="secondary" />
         </Fab>
       </label>
     </div>

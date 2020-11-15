@@ -48,9 +48,12 @@ export default function NameBoard() {
 
   return (
     <>
-      <Grid container>
+      <Grid container spacing={1}>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
+          <Paper
+            className={classes.paper}
+            style={{ backgroundColor: "#2E294E", color: "#F1E9DA" }}
+          >
             <Typography variant="h6">Username:</Typography>
             {username}
           </Paper>
@@ -63,13 +66,19 @@ export default function NameBoard() {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
+          <Paper
+            className={classes.paper}
+            style={{ backgroundColor: "#2E294E", color: "#F1E9DA" }}
+          >
             <Typography variant="h6">Email:</Typography>
             {email}
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
+          <Paper
+            className={classes.paper}
+            style={{ backgroundColor: "#2E294E", color: "#F1E9DA" }}
+          >
             <Typography variant="h6">Role:</Typography>
             {type === "provider" ? "provider" : "client"}
           </Paper>

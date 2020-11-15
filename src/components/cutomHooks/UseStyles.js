@@ -42,10 +42,10 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   icon: {
-    margin: theme.spacing(2),
+    margin: theme.spacing(1),
   },
   iconHover: {
-    margin: theme.spacing(2),
+    margin: theme.spacing(1),
     "&:hover": {
       color: red[800],
     },
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     display: "none",
   },
   button: {
-    color: blue[900],
+    color: "#F1E9DA",
   },
   secondaryButton: {
     color: "gray",
