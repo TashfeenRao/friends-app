@@ -19,7 +19,7 @@ export default function Register({ setUser }) {
       data: data,
     };
     setLoading(true);
-    Axios(config)
+    const unsubscribe = Axios(config)
       .then((response) => {
         setUser(response.data.user);
         localStorage.setItem("token", response.data.jwt);
@@ -30,6 +30,7 @@ export default function Register({ setUser }) {
         toastError("invalid email / password");
         setLoading(false);
       });
+    return unsubscribe;
   };
   const handleSignin = (u) => {
     const data = { identifier: u.email, password: u.password };
@@ -42,7 +43,7 @@ export default function Register({ setUser }) {
       data: data,
     };
     setLoading(true);
-    Axios(config)
+    const unsubscribe = Axios(config)
       .then((response) => {
         setUser(response.data.user);
         localStorage.setItem("token", response.data.jwt);
@@ -53,6 +54,7 @@ export default function Register({ setUser }) {
         toastError("invalid email / password");
         setLoading(false);
       });
+    return unsubscribe;
   };
   return (
     <>
