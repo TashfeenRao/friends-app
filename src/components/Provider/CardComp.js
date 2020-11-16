@@ -26,7 +26,13 @@ export default function CardComp({ username, email, id, url, description }) {
           justifyContent: "center",
         }}
       >
-        <Avatar alt="" src={url} className={classes.large}>
+        <Avatar
+          alt=""
+          style={{ backgroundColor: "#f50057", color: "#F1E9DA" }}
+          src={url}
+          className={classes.large}
+          color="secondary"
+        >
           {username[0].toUpperCase()}
         </Avatar>
       </div>
