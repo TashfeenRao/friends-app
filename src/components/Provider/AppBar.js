@@ -42,7 +42,7 @@ export default function AppBarComp() {
           <Grid container alignContent="center">
             <Grid item xs={6}>
               <Link
-                to="/"
+                to={user.type === "client" ? "/cleints" : "/providers"}
                 style={style.Link}
                 onMouseOver={(e) =>
                   (e.target.style.backgroundColor = "#2E294E")
