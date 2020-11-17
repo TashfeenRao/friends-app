@@ -1,6 +1,6 @@
 import { Container, Grid } from "@material-ui/core";
-import AppBarComp from "../Provider/AppBar";
-import CardComp from "../Provider/CardComp";
+import AppBarComp from "../Profile/AppBar";
+import CardComp from "../Profile/CardComp";
 
 export default function Client({ filUsers }) {
   return (

@@ -1,6 +1,6 @@
 import { Container } from "@material-ui/core";
-import AppBarComp from "../Provider/AppBar";
-import Profile from "./Profile";
+import AppBarComp from "../Profile/AppBar";
+import Profile from "../Profile/Profile";
 
 export default function ProviderProfile() {
   return (

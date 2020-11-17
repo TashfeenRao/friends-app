@@ -1,11 +1,11 @@
-import { AppBar, CircularProgress, Container, Grid } from "@material-ui/core";
+import { CircularProgress, Container, Grid } from "@material-ui/core";
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import AppBarComp from "../Provider/AppBar";
+import AppBarComp from "../Profile/AppBar";
 import toastError from "../toast/toastError";
-import UserDisplay from "./UserDisplay";
-import UserNameBoard from "./UserNameBoard";
+import UserDisplay from "../User/UserDisplay";
+import UserNameBoard from "../User/UserNameBoard";
 
 export default function UserProfile() {
   const { id } = useParams();

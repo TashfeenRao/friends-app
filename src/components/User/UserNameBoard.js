@@ -22,7 +22,7 @@ export default function UserNameBoard({ username, type, description, email }) {
           style={{ backgroundColor: "#2E294E", color: "#F1E9DA" }}
         >
           <Typography variant="h6">Description:</Typography>
-          {description ? description : "I'm Using Serviso"}
+          {description ? description : "I'm Using Serviso.."}
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6}>

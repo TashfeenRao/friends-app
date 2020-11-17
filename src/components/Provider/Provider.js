@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Container, Grid } from "@material-ui/core";
-import AppBarComp from "./AppBar";
-import CardComp from "./CardComp";
+import AppBarComp from "../Profile/AppBar";
+import CardComp from "../Profile/CardComp";
 
 export default memo(function Provider({ filUsers }) {
   return (

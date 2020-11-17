@@ -27,7 +27,7 @@ export default function DescriptionComp({ setOpen, description, loading }) {
           <EditIcon />
         </Link>
       </Typography>
-      {description ? description : "Hi, I'm using friends app"}
+      {description ? description : "Hi, I'm using serviso app"}
     </Paper>
   );
 }

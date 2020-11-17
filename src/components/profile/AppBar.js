@@ -51,7 +51,7 @@ export default function AppBarComp() {
                   (e.target.style.backgroundColor = "inherit")
                 }
               >
-                Friends App
+                Serviso App
               </Link>
             </Grid>
             <Grid item xs={6}>
