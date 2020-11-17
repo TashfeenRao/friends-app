@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,30 +6,20 @@ import {
   Redirect,
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { useAuthenticate } from "./components/cutomHooks/useAuthenticate";
 import Register from "./components/Registration/Register";
 import Root from "./components/Root/Root";
 import toastSuccess from "./components/toast/toastSuccess";
 export const userContext = createContext();
 
 function App() {
-  const [loggedin, setLoggedin] = useState(false);
-  const [user, setUser] = useState(
-    null || JSON.parse(localStorage.getItem("user")),
-  );
-  useEffect(() => {
-    if (user) setLoggedin(true);
-  }, [user]);
+  const { loggedin, setLoggedin, setUser, user } = useAuthenticate();
 
-  useEffect(() => {
-    if (loggedin) {
-      toastSuccess("successfully logged in");
-    }
-  }, [loggedin]);
   return (
     <>
       <ToastContainer
-        position="top-right"
-        autoClose={5000}
+        position="bottom-right"
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -49,9 +39,10 @@ function App() {
             <Redirect to="/register" />
           </Switch>
         ) : (
-          <userContext.Provider value={{ user, setLoggedin }}>
-            <Root />
-          </userContext.Provider>
+          <>
+            {toastSuccess("Successfully Loggedin")}
+            <Root user={user} setLoggedin={setLoggedin} />
+          </>
         )}
       </Router>
     </>

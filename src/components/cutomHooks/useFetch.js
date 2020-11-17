@@ -1,32 +1,26 @@
 import { useEffect, useState } from "react";
 import Axios from "axios";
-import toastError from "./UseStyles";
+import { config } from "./Config";
 
 const useFetch = () => {
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState(null);
-
+  const [error, setError] = useState(null);
   useEffect(() => {
-    const config = {
-      method: "get",
-      url: "https://friends-app-strapi.herokuapp.com/users",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    };
-    setLoading(true);
-    const unsubcribe = Axios(config)
-      .then((response) => {
-        setUsers(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        toastError("could not able to find users");
-        setLoading(false);
-      });
-    return unsubcribe;
+    return (
+      setLoading(true),
+      Axios(config)
+        .then((response) => {
+          setUsers(response.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          setLoading(false);
+          setError(error);
+        })
+    );
   }, []);
 
-  return { loading, users };
+  return { loading, users, error };
 };
 export default useFetch;
