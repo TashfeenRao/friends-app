@@ -9,11 +9,12 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
-    color: theme.palette.text.secondary,
     marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    backgroundColor: "#2E294E",
+    color: "#F1E9DA",
   },
   menuButton: {
     marginRight: theme.spacing(2),

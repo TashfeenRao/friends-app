@@ -1,3 +1,5 @@
+import toastSuccess from "../toast/toastSuccess";
+
 const { useEffect, useState } = require("react");
 
 export const useAuthenticate = () => {
@@ -7,8 +9,9 @@ export const useAuthenticate = () => {
   );
 
   useEffect(() => {
-    if (user) setLoggedin(true);
-  }, [user]);
+    user && toastSuccess("Successfully Loggedin");
+    setLoggedin(true);
+  }, []);
 
   return { loggedin, setLoggedin, setUser, user };
 };

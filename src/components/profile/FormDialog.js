@@ -6,8 +6,11 @@ import {
   DialogTitle,
   TextField,
 } from "@material-ui/core";
+import { useState } from "react";
 
-export default function FormDialog({ open, setOpen, handleEdit, setInput }) {
+export default function FormDialog({ open, setOpen, handleEdit }) {
+  const [input, setInput] = useState(null);
+
   return (
     <div>
       <Dialog
@@ -31,7 +34,7 @@ export default function FormDialog({ open, setOpen, handleEdit, setInput }) {
           <Button onClick={() => setOpen(false)} color="primary">
             Cancel
           </Button>
-          <Button onClick={() => handleEdit()} color="primary">
+          <Button onClick={() => handleEdit(input)} color="primary">
             Edit
           </Button>
         </DialogActions>

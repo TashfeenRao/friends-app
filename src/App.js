@@ -9,7 +9,6 @@ import { ToastContainer } from "react-toastify";
 import { useAuthenticate } from "./components/cutomHooks/useAuthenticate";
 import Register from "./components/Registration/Register";
 import Root from "./components/Root/Root";
-import toastSuccess from "./components/toast/toastSuccess";
 export const userContext = createContext();
 
 function App() {
@@ -39,10 +38,12 @@ function App() {
             <Redirect to="/register" />
           </Switch>
         ) : (
-          <>
-            {toastSuccess("Successfully Loggedin")}
-            <Root user={user} setLoggedin={setLoggedin} />
-          </>
+          <Root
+            user={user}
+            setUser={setUser}
+            setLoggedin={setLoggedin}
+            loggedin={loggedin}
+          />
         )}
       </Router>
     </>

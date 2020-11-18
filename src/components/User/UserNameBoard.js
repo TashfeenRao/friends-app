@@ -2,7 +2,7 @@ import { Grid, Paper, Typography } from "@material-ui/core";
 import React from "react";
 import useStyles from "../cutomHooks/UseStyles";
 
-export default function UserNameBoard({ username, type, description, email }) {
+export default function UserNameBoard({ user }) {
   const classes = useStyles();
 
   return (
@@ -13,7 +13,7 @@ export default function UserNameBoard({ username, type, description, email }) {
           style={{ backgroundColor: "#2E294E", color: "#F1E9DA" }}
         >
           <Typography variant="h6">Username:</Typography>
-          {username}
+          {user && user.username}
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6}>
@@ -22,7 +22,7 @@ export default function UserNameBoard({ username, type, description, email }) {
           style={{ backgroundColor: "#2E294E", color: "#F1E9DA" }}
         >
           <Typography variant="h6">Description:</Typography>
-          {description ? description : "I'm Using Serviso.."}
+          {user && user.description ? user.description : "I'm Using Serviso.."}
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6}>
@@ -31,7 +31,7 @@ export default function UserNameBoard({ username, type, description, email }) {
           style={{ backgroundColor: "#2E294E", color: "#F1E9DA" }}
         >
           <Typography variant="h6">Email:</Typography>
-          {email}
+          {user && user.email}
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6}>
@@ -40,7 +40,7 @@ export default function UserNameBoard({ username, type, description, email }) {
           style={{ backgroundColor: "#2E294E", color: "#F1E9DA" }}
         >
           <Typography variant="h6">Role:</Typography>
-          {type === "provider" ? "provider" : "client"}
+          {user && user.type === "provider" ? "provider" : "client"}
         </Paper>
       </Grid>
     </Grid>
