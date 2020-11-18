@@ -1,20 +1,22 @@
-import React from "react";
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
+import { useState } from "react";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
 import Copyright from "./Copywrite";
 import useStyles from "../cutomHooks/UseStyles";
-import { Checkbox, FormControlLabel } from "@material-ui/core";
-import { useState } from "react";
+import {
+  Checkbox,
+  FormControlLabel,
+  Container,
+  Typography,
+  Box,
+  Grid,
+  Link,
+  TextField,
+  CssBaseline,
+  Button,
+  Avatar,
+} from "@material-ui/core";
 
-export default function SignUp({ setActive, handleSubmit }) {
+export default function SignUp({ setActive, handleSignUp }) {
   const classes = useStyles();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -35,7 +37,7 @@ export default function SignUp({ setActive, handleSubmit }) {
           className={classes.form}
           onSubmit={(e) => {
             e.preventDefault();
-            handleSubmit({
+            handleSignUp({
               username,
               email,
               password,

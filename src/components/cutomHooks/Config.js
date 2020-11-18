@@ -1,6 +1,8 @@
+export const baseUrl = "https://friends-app-strapi.herokuapp.com/";
+
 export const config = {
   method: "get",
-  url: "https://friends-app-strapi.herokuapp.com/users",
+  url: `${baseUrl}users`,
   headers: {
     "Content-Type": "application/json",
   },
