@@ -26,7 +26,7 @@ export default function SignUp({ setActive, handleSignUp }) {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
+      <div className={classes.login}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>

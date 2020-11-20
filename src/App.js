@@ -14,8 +14,6 @@ export const userContext = createContext();
 function App() {
   const { loggedin, setLoggedin, setUser, user } = useAuthenticate();
 
-  console.log(loggedin);
-
   return (
     <>
       <ToastContainer

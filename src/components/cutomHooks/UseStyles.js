@@ -6,6 +6,14 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   marginTop: "10px",
+  login: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
