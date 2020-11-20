@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import AddFriend from "./AddFriend";
 
 export default function CardComp({ username, email, id, url, description }) {
   const classes = useStyles();
@@ -57,6 +58,7 @@ export default function CardComp({ username, email, id, url, description }) {
         >
           Profile
         </Link>
+        <AddFriend />
       </CardActions>
     </Card>
   );
