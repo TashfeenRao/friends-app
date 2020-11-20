@@ -1,9 +1,4 @@
-import { Avatar, CircularProgress, Fab } from "@material-ui/core";
-import Axios from "axios";
-import toastError from "../toast/toastError";
-import { useState } from "react";
-import toastSuccess from "../toast/toastSuccess";
-import AddIcon from "@material-ui/icons/Add";
+import { Avatar, CircularProgress } from "@material-ui/core";
 import { useUpload } from "../cutomHooks/useUpload";
 import useStyles from "../cutomHooks/UseStyles";
 import Uploader from "./Uploader";
