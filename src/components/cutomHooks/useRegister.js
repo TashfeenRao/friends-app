@@ -9,7 +9,6 @@ export const useRegister = (setUser) => {
   const [loading, setLoading] = useState(false);
 
   const handleSignUp = (data) => {
-    console.log(data);
     const newConfig = {
       ...config,
       method: "post",

@@ -58,7 +58,7 @@ export default function CardComp({ username, email, id, url, description }) {
         >
           Profile
         </Link>
-        <AddFriend />
+        <AddFriend fId={id} />
       </CardActions>
     </Card>
   );
