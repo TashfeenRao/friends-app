@@ -8,7 +8,7 @@ export default memo(function Provider({ filUsers }) {
     <>
       <AppBarComp />
       <Container maxWidth="xl">
-        <Grid container spacing={1}>
+        <Grid container spacing={2}>
           <Grid item xs={12}></Grid>
           {filUsers &&
             filUsers.map((user) => (

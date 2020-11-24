@@ -2,8 +2,8 @@ import { toast } from "react-toastify";
 
 export default function toastError(message) {
   toast.error(message, {
-    position: "top-right",
-    autoClose: 5000,
+    position: "top-center",
+    autoClose: 4000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,

@@ -8,10 +8,15 @@ export const useAuthenticate = () => {
   const [user, setUser] = useState(initialState);
   useEffect(() => {
     if (user) {
-      toastSuccess("Successfully Loggedin");
       setLoggedin(true);
     }
   }, [user]);
+
+  useEffect(() => {
+    if (loggedin) {
+      toastSuccess("Successfully Loggedin");
+    }
+  }, [loggedin]);
 
   return { loggedin, setLoggedin, setUser, user };
 };

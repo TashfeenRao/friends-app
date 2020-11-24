@@ -18,10 +18,10 @@ const AddFriend = ({ fId }) => {
 
     const waiting = sent.filter((r) => r.friend_id === fId && !r.confirmed);
     const pending = recieved.filter((r) => r.user_id === fId && !r.confirmed);
-    const unFriendR = recieved.filter((r) => r.user_id === fId && r.confirmed);
-    const unFriendS = sent.filter(
-      (r) => r.friend_id === user.id && r.confirmed,
-    );
+    //const unFriendR = recieved.filter((r) => r.user_id === fId && r.confirmed);
+    //const unFriendS = sent.filter(
+    //   (r) => r.friend_id === user.id && r.confirmed,
+    // );
     if (waiting.length) {
       const delConfig = {
         method: "delete",
@@ -183,7 +183,7 @@ const AddFriend = ({ fId }) => {
             ],
           });
           setLoading(false);
-          toastSuccess("added new friend");
+          toastSuccess("Sent Friend Request");
           setStatus("pending");
         })
         .catch((error) => {
@@ -217,23 +217,26 @@ const AddFriend = ({ fId }) => {
     <Button
       style={{
         textDecoration: "none",
-        color: status === "friends" ? "#000" : "#F1E9DA",
+        color: "#F1E9DA",
         backgroundColor:
           status === "friends"
-            ? "white"
+            ? "rgb(20,20,47)"
             : status === "pending"
             ? "#276531"
-            : "red",
+            : "#f50057",
         padding: "10px",
         borderRadius: "5px",
+        border: "1px solid #f50057",
+        cursor: "pointer",
       }}
       onClick={() => handleAddFriend()}
       disabled={status === "friends"}
+      dis
     >
       {status === "pending"
         ? "pending"
         : status === "friends"
-        ? "friends"
+        ? "Friends"
         : "Add Friend"}
     </Button>
   );
